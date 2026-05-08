@@ -65,15 +65,14 @@ Task Assignment:
 	- Create and save kudos 
 	- can’t give kudos to yourself
 
-4. Controller:
+6. Controller:
 	- make:Controller for the Entities
 	- crud operations for both Entities
 
-5. Templates:
-		-The design for the pages
-6. routing:
+
+7. routing:
 	-define routes for the http requests
-7. Forms:
+8. Forms:
 	- make:form to get input from the user
 	- validate and sanitize user input
 
@@ -81,6 +80,8 @@ Task Assignment:
 9. Fixtures:
 	- To create dummy data for the database
 	- to help test the routes actually work
+10. Templates:
+		-The design for the pages
 
 
 
