@@ -17,9 +17,9 @@ final class UserController extends AbstractController
         ]);
     }
 
-    public function new(): Response
-    {
+    public function new(): Response{
         $user = new User();
+        $form =$this->createForm()
     }
 
     
