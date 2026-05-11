@@ -16,8 +16,16 @@ class Kudos
     #[ORM\Column(length: 255)]
     private ?string $msgContent = null;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $sender = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $receiver = null;
+
     #[ORM\Column]
-    private ?\DateTime $dateTime = null;
+    private ?\DateTime $createdAt = null;
 
     public function getId(): ?int
     {
@@ -36,14 +44,38 @@ class Kudos
         return $this;
     }
 
-    public function getDateTime(): ?\DateTime
+    public function getSender(): ?User
     {
-        return $this->dateTime;
+        return $this->sender;
     }
 
-    public function setDateTime(\DateTime $dateTime): static
+    public function setSender(?User $sender): static
     {
-        $this->dateTime = $dateTime;
+        $this->sender = $sender;
+
+        return $this;
+    }
+
+    public function getReceiver(): ?User
+    {
+        return $this->receiver;
+    }
+
+    public function setReceiver(?User $receiver): static
+    {
+        $this->receiver = $receiver;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTime
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTime $createdAt): static
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
