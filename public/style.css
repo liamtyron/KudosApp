@@ -1,0 +1,10 @@
+body {
+    background-color: #ebebeb;
+}
+
+.kudos-card{
+    background-color: white;
+    margin-bottom: 1em;
+    padding: 1em;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+}
