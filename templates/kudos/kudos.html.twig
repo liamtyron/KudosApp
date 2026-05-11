@@ -1,0 +1,40 @@
+{% extends 'layout_boxed.html.twig' %}
+
+{% block content %}
+<div class="row mt-3">
+        <div class="col">
+            <h1>Dashboard/Feed</h1>
+        </div>
+    </div>
+
+    
+
+    <div class="row mt-3 kudos">
+        {% for kudo in kudos %}
+            <div class="col-12 col-lg-6">
+                <div class="kudos-card">
+                    <div class="row">
+                        <div class="kudos-card-header col-12 d-flex justify-content-between align-items-center">
+                            <div class="day">{{ kudo.createdAt|date('l') }}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+    
+       
+    <dl>
+       
+        <dt>{{ kudo.sender.profilePic}} <strong>{{ kudo.sender.firstName }} {{ kudo.sender.lastName }}</strong> @{{ kudo.sender.username }}</dt>
+        <dd>Created At: {{ kudo.createdAt }}</dd>
+
+        <dd>To <strong>{{ kudo.receiver.firstName }} {{ kudo.receiver.lastName }}</strong> @{{ kudo.receiver.username }}</dd>
+        <dd>{{ kudo.msgContent }}</dd>
+
+
+    </dl>
+
+    {% endfor %}
+
+{% endblock %}
