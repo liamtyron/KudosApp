@@ -12,12 +12,15 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Address;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
@@ -63,12 +66,28 @@ class RegistrationController extends AbstractController
     //         'registrationForm' => $form,
     //     ]);
     // }
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, VerifyEmailHelperInterface $verifyEmailHelper, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, VerifyEmailHelperInterface $verifyEmailHelper, EntityManagerInterface $entityManager, SluggerInterface $slugger, #[Autowire('%kernel.project_dir%/public/profilepics/profilepics')] string $profilepicsDirectory): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $profile = $form->get('profilePic')->getData();
+
+            if($profile){
+                $file = pathinfo($profile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($file);
+                $newFilename = $safeFilename.'-'.uniqid().'-'.$profile->guessExtension();
+
+                try{
+                    $profile->move($profilepicsDirectory, $newFilename);
+                }catch(FileException $e){
+
+                }
+
+                $user->setProfilePic($newFilename);
+            }
+
 
             $user->setPassword(
             $userPasswordHasher->hashPassword(
