@@ -8,10 +8,13 @@ use App\Entity\User;
 use App\Form\User1Type;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Id;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
 #[Route('/user')]
 final class UserController extends AbstractController
@@ -44,12 +47,16 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/show', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    #[Route('/user', name: 'app_user_show', methods: ['GET'])]
+    public function show(#[CurrentUser()]User $user, EntityManagerInterface $entityManager): Response
     {
-        
+   
+
+
         return $this->render('user/show.html.twig', [
             'user' => $user,
+            
+            
         ]);
     }
 
