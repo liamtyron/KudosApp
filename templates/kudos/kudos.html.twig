@@ -3,8 +3,17 @@
 {% block content %}
 <div class="row mt-3">
     <div class="col">
-        <h1>Dashboard/Feed</h1>
+        <h1>Dashboard</h1>
     </div>
+</div>
+
+<div class="searchKudos">
+    
+    <form action="search.php" method="GET">
+            <i class=" order bi bi-arrow-down-up"></i>
+        <input type="text" name="query" placeholder="Search for a kudos...">
+        <button type="submit"><i class="bi bi-search"></i></button>
+    </form>
 </div>
 
 {% for kudo in kudos %}

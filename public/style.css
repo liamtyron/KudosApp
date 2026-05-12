@@ -2,7 +2,23 @@ body {
     background-color: #ebebeb;
 }
 
+.navbar img{
+    height: 3.5rem;
+}
 
+.navbar a{
+    text-decoration: none;
+    margin-right: 1rem;
+    color: black;
+    font-weight: 200;
+}
+
+.navbar li :hover,
+:active{
+    color: purple;
+    
+   
+}
 
 .card{
     background-color: white;
@@ -12,6 +28,31 @@ body {
 }
 
 .col h1{
-    margin: 0 auto;
-    align-items: center;
+    text-align: center;
+    color: black;
+    font-weight: lighter;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.searchKudos{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.searchKudos input{
+    border-radius: 10px;
+    padding: 6px 15px;
+    border: none;
+    width: 30%;
+}
+
+.searchKudos button{
+    border: none;
+    background-color: transparent;
+    padding-left: 0.5rem;
+}
+
+.order{
+    padding-right: 0.5rem;
 }
