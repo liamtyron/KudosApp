@@ -6,7 +6,8 @@ use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface;
+use Symfony\Bridge\Doctrine\Security\Core\User\UserLoaderInterface;
+use Symfony\Bridge\Doctrine\Security\User\UserLoaderInterface as UserUserLoaderInterface;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -15,7 +16,7 @@ use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
 /**
  * @extends ServiceEntityRepository<User>
  */
-class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
+class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface, UserUserLoaderInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -36,18 +37,31 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
     
-
-    public function loadUserByIdentifier(string $username, EntityManager $entityManager): ?User
+    public function loadUserByIdentifier(string $usernameOrEmail): ?User
     {
-        return $entityManager->createQuery(
-            'SELECT u
-            FROM App\Entity\User u
-            WHERE u.username = :query'
-        )
+        $entityManager = $this->getEntityManager();
 
-        ->setParameter('query', $username)
-        ->getOneOrNullResult();
+        return $entityManager->createQuery(
+                'SELECT u
+                FROM App\Entity\User u
+                WHERE u.username = :query
+                OR u.email = :query'
+            )
+            ->setParameter('query', $usernameOrEmail)
+            ->getOneOrNullResult();
     }
+
+    // public function loadUserByIdentifier(string $username, EntityManager $entityManager): ?User
+    // {
+    //     return $entityManager->createQuery(
+    //         'SELECT u
+    //         FROM App\Entity\User u
+    //         WHERE u.username = :query'
+    //     )
+
+    //     ->setParameter('query', $username)
+    //     ->getOneOrNullResult();
+    // }
 
 
 
