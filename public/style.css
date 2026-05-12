@@ -2,6 +2,74 @@ body {
     background-color: #ebebeb;
 }
 
+/* .container{
+    margin: 0; 
+    padding: 0;
+} */
+.sign-in{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+img{
+  background-color: red;
+  opacity: 30%;
+  width: 50;
+  height: 100;
+}
+
+.col-2{
+    width: 80%;
+    height: auto;
+    justify-self: center;
+}
+
+.sign-in button{
+    background-color: #8552FF;
+    margin-top: 1.5rem;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+}
+
+.sign-in button:hover{
+    background-color: #DCD0FF;
+    font-weight: bold;
+}
+
+.navbar img{
+    height: 3.5rem;
+}
+
+.navbar a{
+    text-decoration: none;
+    margin-right: 1rem;
+    color: black;
+    font-weight: 200;
+}
+
+.navbar a:hover{
+    color: purple;
+}
+
+
+/* LOGIN */
+
+.sign-in .h3{
+    font-weight: 200;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.sign-in label{
+    font-weight: 350;
+    margin: 0.5rem 0;
+}
+
+
+
+
 
 
 .card{
@@ -12,6 +80,31 @@ body {
 }
 
 .col h1{
-    margin: 0 auto;
-    align-items: center;
+    text-align: center;
+    color: black;
+    font-weight: lighter;
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+
+.searchKudos{
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.searchKudos input{
+    border-radius: 10px;
+    padding: 6px 15px;
+    border: none;
+    width: 30%;
+}
+
+.searchKudos button{
+    border: none;
+    background-color: transparent;
+    padding-left: 0.5rem;
+}
+
+.order{
+    padding-right: 0.5rem;
 }
