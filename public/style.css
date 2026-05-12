@@ -2,6 +2,42 @@ body {
     background-color: #ebebeb;
 }
 
+/* .container{
+    margin: 0; 
+    padding: 0;
+} */
+.sign-in{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+
+img{
+  background-color: red;
+  opacity: 30%;
+  width: 50;
+  height: 100;
+}
+
+.col-2{
+    width: 80%;
+    height: auto;
+    justify-self: center;
+}
+
+.sign-in button{
+    background-color: #8552FF;
+    margin-top: 1.5rem;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+}
+
+.sign-in button:hover{
+    background-color: #DCD0FF;
+    font-weight: bold;
+}
+
 .navbar img{
     height: 3.5rem;
 }
@@ -13,12 +49,28 @@ body {
     font-weight: 200;
 }
 
-.navbar li :hover,
-:active{
+.navbar a:hover{
     color: purple;
-    
-   
 }
+
+
+/* LOGIN */
+
+.sign-in .h3{
+    font-weight: 200;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.sign-in label{
+    font-weight: 350;
+    margin: 0.5rem 0;
+}
+
+
+
+
+
 
 .card{
     background-color: white;
