@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class KudosController extends AbstractController
 {
-    #[Route("/dashboard")]
+    #[Route('/dashboard')]
     public function kudos():Response
     {
         $kudos = [

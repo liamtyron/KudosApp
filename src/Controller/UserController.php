@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\PasswordType;
+use App\Form\RegistrationFormType;
 use App\Form\User1Type;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -60,22 +62,43 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    #[Route('/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    public function edit(Request $request, #[CurrentUser()]User $user, EntityManagerInterface $entityManager): Response
     {
-        $form = $this->createForm(User1Type::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_user_show', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('user/edit.html.twig', [
             'user' => $user,
             'form' => $form,
         ]);
+    }
+
+    #[Route('/reset-password', name: 'app_user_reset_pswd')]
+    public function resetPassword (Request $request, EntityManagerInterface $entityManager,#[CurrentUser()] User $user):Response
+    {
+        $form = $this->createForm(PasswordType::class, $user);
+        $form->handleRequest($request);
+
+         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->render('user/update_password.html.twig', [
+            'user' => $user,
+            'form' => $form,
+        ]);
+
+
+
     }
 
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]

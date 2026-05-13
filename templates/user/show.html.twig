@@ -6,22 +6,10 @@
     <h1>User</h1>
 
     <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
+        <tbody>       
             <tr>
                 <th>Username</th>
                 <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
             </tr>
             <tr>
                 <th>FirstName</th>
@@ -42,7 +30,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+    <a href="{{ path('app_dashboard') }}">&larr;back </a>
 
     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
 

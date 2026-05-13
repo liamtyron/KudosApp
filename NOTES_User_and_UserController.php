@@ -226,3 +226,19 @@
 //    → RegistrationController  — to let users sign up (with password hashing)
 //    → LoginController         — to let users log in (Symfony's form_login handles most of this)
 //    → security.yaml           — to wire it all together
+
+
+
+// view user deleted rows:
+//  //         <tr>
+//   //              <th>Id</th>
+//                 <td>{{ user.id }}</td>
+//     //        </tr>
+//     //        <tr>
+//                 <th>Roles</th>
+//                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+//             </tr>
+//             <tr>
+//                 <th>Password</th>
+//                 <td>{{ user.password }}</td>
+//             </tr>
