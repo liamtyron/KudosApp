@@ -48,9 +48,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private bool $isVerified = false;
 
-   
-    
-
     public function getId(): ?int
     {
         return $this->id;
@@ -146,7 +143,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     }
     
-
     public function getLastName(): ?string
     {
         return $this->lastName;
