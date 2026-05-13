@@ -67,9 +67,27 @@ img{
     margin: 0.5rem 0;
 }
 
+/* REGISTER */
 
+h1{
+    font-weight: 200;
+    margin-top: 2rem;
+    text-align: center;
+}
 
+.register{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
 
+.col-reg-1 {
+    
+}
+
+.col-reg-2 {
+ 
+}
 
 
 .card{
