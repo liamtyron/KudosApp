@@ -15,6 +15,8 @@ final class DashboardController extends AbstractController
     public function kudos(KudosRepository $kudosRepository):Response
     {
 
+        
+
     $kudos = $kudosRepository->findAll();
 
     return $this->render('kudos/kudos.html.twig', [
