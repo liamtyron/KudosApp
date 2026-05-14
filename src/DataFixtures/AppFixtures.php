@@ -114,7 +114,7 @@ class AppFixtures extends Fixture
 
             $kudos->setSender($sender);
             $kudos->setReceiver($receiver);
-            $kudos->setMsgContent($faker->realText(100));
+            $kudos->setMsgContent($faker->realText(140));
             $kudos->setCreatedAt($faker->dateTimeBetween('-1 month', 'now'));
            
             $manager->persist($kudos);
