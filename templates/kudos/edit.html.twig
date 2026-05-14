@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Kudos{% endblock %}
+
+{% block body %}
+    <h1>Edit Kudos</h1>
+
+    {{ include('kudos/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_kudos_index') }}">back to list</a>
+
+    {{ include('kudos/_delete_form.html.twig') }}
+{% endblock %}

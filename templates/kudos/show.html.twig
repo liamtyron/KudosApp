@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Kudos{% endblock %}
+
+{% block body %}
+    <h1>Kudos</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ kudo.id }}</td>
+            </tr>
+            <tr>
+                <th>MsgContent</th>
+                <td>{{ kudo.msgContent }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ kudo.createdAt ? kudo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_kudos_index') }}">back to list</a>
+
+    <a href="{{ path('app_kudos_edit', {'id': kudo.id}) }}">edit</a>
+
+    {{ include('kudos/_delete_form.html.twig') }}
+{% endblock %}
