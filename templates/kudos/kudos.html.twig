@@ -9,19 +9,28 @@
 
 <div class="searchKudos">
     
-    <form action="{{ path('app_dashboard') }}" method="GET">
+    <form action="{{ path('app_search') }}" method="GET">
             <i class=" order bi bi-arrow-down-up"></i>
         <input type="text" name="q" value="{{ app.request.query.get('q') }}" placeholder="Search for a kudos...">
         <button type="submit"><i class="bi bi-search"></i></button>
     </form>
 </div>
 
+
+
+
 {% for kudo in kudos %}
 <div class="card mt-3" style="width: auto;">
     
    <div class="card-body">
-    <div class="d-flex align-items-center mb-2">
-        <img src="{{  asset('kudo.profilePic') }}" 
+     <div class="row">
+        <div class="stamp d-flex justify-content-between align-items-center mb-4">
+            <div class="day">{{ kudo.createdAt|date('l') }}</div>
+            <div class="dateHour">{{ kudo.createdAt|date('d.m h:m') }}</div>
+        </div>
+  </div>
+    <div class="d-flex align-items-center mb-3">
+        <img src="{{ kudo.profilePic ?? asset('images/default.png') }}" 
              alt="{{ kudo.sender.firstName }}"
              class="rounded-circle me-2"
              style="width: 40px; height: 40px; object-fit: cover;">
@@ -35,17 +44,18 @@
      
     
     <h7 class="card-receiver">To <strong>{{ kudo.receiver.firstName }} {{ kudo.receiver.lastName }}</strong></h7>
-
-    <p class="card-text">{{ kudo.msgContent }}</p>
-    <div class="row">
-        <div class="stamp d-flex justify-content-between align-items-center">
-            <div class="day">{{ kudo.createdAt|date('l') }}</div>
-            <div class="dateHour">{{ kudo.createdAt|date('d.m h:m') }}</div>
-    </div>
-  </div>
+    
+    <p class="card-text mb-4"><br>{{ kudo.msgContent }}</p>
+   
     </div>
 </div>
+{% else %}
+<div class="error-message">
+    No Kudos Found!
+</div>
+    
 {% endfor %}
+
 
 {% endblock %}
 
