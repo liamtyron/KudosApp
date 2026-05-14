@@ -24,8 +24,11 @@
         
             <ul class="navbar-nav">
                 <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-person-circle"></i>
+                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <!-- <i class="bi bi-person-circle"></i> -->
+                      <img src="{{  asset('kudo.profilePic') }}" 
+                    class="rounded-circle me-2"
+                    style="width: 30px; height: 30px; object-fit: cover;">
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                     <li><a class="dropdown-item" href="{{ path('app_user_show') }}">Profile Settings</a></li>

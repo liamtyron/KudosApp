@@ -107,25 +107,28 @@ h1{
 .register form{
     display: flex;
     gap: 50px;
+    
     /* align-items: flex-start; */
 }
 
+.register form input{
+    padding-left: 15px;
+}
 
 
 .col-reg-1 label, input {
     /* display: block; */
     font-weight: 350;
     /* margin: 0.2rem 0; */
-    padding: 6px;
+    padding: 10px;
     box-sizing: border-box;
     width: 100%;
 }
 
 .col-reg-1 input {
-    /* display: block; */
     border: none;
     background-color: #ebebeb;
-    padding: 6px;
+    padding-left: 10px;
     margin: 0.3rem 0;
     width: 100%;
     border-radius: 10px;
@@ -155,6 +158,7 @@ h1{
     /* align-items: flex-start; */
     /* justify-items: flex-start; */
     width: 100%;
+   
    
     
 }

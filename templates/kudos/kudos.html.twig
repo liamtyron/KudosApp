@@ -20,12 +20,20 @@
 <div class="card mt-3" style="width: auto;">
     
    <div class="card-body">
-     <img src="{{  asset('kudo.sender.profilePic') }}" 
+    <div class="d-flex align-items-center mb-2">
+        <img src="{{  asset('kudo.profilePic') }}" 
              alt="{{ kudo.sender.firstName }}"
              class="rounded-circle me-2"
              style="width: 40px; height: 40px; object-fit: cover;">
-    <h5 class="card-sender"><strong>{{ kudo.sender.firstName }} {{ kudo.sender.lastName }}</strong></h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">@{{ kudo.sender.username }}</h6>
+             <div>
+                <h5 class="card-sender"><strong>{{ kudo.sender.firstName }} {{ kudo.sender.lastName }}</strong></h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">@{{ kudo.sender.username }}</h6>
+             </div>
+    
+    
+    </div>
+     
+    
     <h7 class="card-receiver">To <strong>{{ kudo.receiver.firstName }} {{ kudo.receiver.lastName }}</strong></h7>
 
     <p class="card-text">{{ kudo.msgContent }}</p>
