@@ -16,10 +16,10 @@ class SubmitKudosType extends AbstractType
         $builder
             ->add('msgContent')
             ->add('createdAt')
-            ->add('sender', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
+            // ->add('sender', EntityType::class, [
+            //     'class' => User::class,
+            //     'choice_label' => 'id',
+            // ])
             ->add('receiver', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',

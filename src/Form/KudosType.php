@@ -16,13 +16,16 @@ class KudosType extends AbstractType
         $builder
             ->add('msgContent')
             ->add('createdAt')
-            ->add('sender', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
+            // ->add('sender', EntityType::class, [
+            //     'class' => User::class,
+            //     'choice_label' => function ($user) {
+            //     return $user->getFirstName() . ' ' . $user->getLastName();},
+            // ])
+        
             ->add('receiver', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => function ($user) {
+                return $user->getFirstName() . ' ' . $user->getLastName();},
             ])
         ;
     }
