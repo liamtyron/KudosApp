@@ -9,7 +9,8 @@
         <tbody>       
             <tr>
                 <th>Profile Picture</th>
-        <td><img src="{{ asset('profilepics/profilepics/' ~ user.profilePic) }}"></td>
+        <td><img src="{{ asset('profilepics/profilepics/' ~ user.profilePic) }}"class="rounded-circle me-2"
+             style="width: 60px; height: 60px; object-fit: cover;"></td>
                 
             </tr>
              <tr>
@@ -27,10 +28,6 @@
             <tr>
                 <th>Email</th>
                 <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>ProfilePic</th>
-                <td>{{ user.profilePic }}</td>
             </tr>
         </tbody>
     </table>

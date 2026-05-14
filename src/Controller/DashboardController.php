@@ -38,4 +38,34 @@ final class DashboardController extends AbstractController
     
     }
 
+
+    #[Route('/sort', name:'app_sort_desc')]
+    public function sortDesc(Request $request, KudosRepository $kudosRepository):Response
+    {
+       $order = $request->query->get('sort', 'DESC'); 
+        $kudos = $kudosRepository->findBy([], ['createdAt' => $order]);
+  
+         return $this->render('kudos/kudos.html.twig', [
+        'kudos' => $kudos,
+        'currentOrder' => $order, 
+        
+        ]);
+    }
+
+ 
+
+    #[Route('/sort-it', name:'app_sort_asc')]
+    public function sortAsc(Request $request, KudosRepository $kudosRepository): Response
+    {
+        $order = $request->query->get('sort', 'ASC'); 
+            $kudos = $kudosRepository->findBy([], ['createdAt' => $order]);
+    
+            return $this->render('kudos/kudos.html.twig', [
+            'kudos' => $kudos,
+            'currentOrder' => $order, 
+            
+        ]);
+    }
+
+
 }
