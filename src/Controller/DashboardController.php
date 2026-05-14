@@ -26,12 +26,21 @@ final class DashboardController extends AbstractController
     #[Route('/search', name:'app_search')]
     public function search(Request $request, KudosRepository $kudosRepository):Response
     {
-        $searchTerm = $request->query->get('q');
-        $results = $searchTerm ? $kudosRepository->findByName($searchTerm): [];
+         $query = $request->query->get('q');
+    
+   
+    if ($query)
+    {
+        $kudos = $kudosRepository->findByName($query);
+    } 
+    else 
+    {
+        $kudos = $kudosRepository->findAll();
+    
+    }
 
     return $this->render('kudos/kudos.html.twig', [
-        'results' => $results,
-        'searchTerm' => $searchTerm,
+        'kudos' => $kudos,
     ]);
     
     }
