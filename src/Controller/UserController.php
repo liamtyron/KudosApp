@@ -80,27 +80,6 @@ final class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/reset-password', name: 'app_user_reset_pswd')]
-    public function resetPassword (Request $request, EntityManagerInterface $entityManager,#[CurrentUser()] User $user):Response
-    {
-        $form = $this->createForm(PasswordType::class, $user);
-        $form->handleRequest($request);
-
-         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-
-            return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('user/update_password.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
-
-
-
-    }
-
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
