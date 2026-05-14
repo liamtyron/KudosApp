@@ -16,28 +16,17 @@ class KudosRepository extends ServiceEntityRepository
         parent::__construct($registry, Kudos::class);
     }
 
-    //    /**
-    //     * @return Kudos[] Returns an array of Kudos objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('k')
-    //            ->andWhere('k.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('k.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    public function findByName(string $query): array{
 
-    //    public function findOneBySomeField($value): ?Kudos
-    //    {
-    //        return $this->createQueryBuilder('k')
-    //            ->andWhere('k.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        return $this->createQueryBuilder('k')
+        // ->join('k.sender', 's')
+        // ->join('k.receiver', 'r')
+        ->where('k.firstName LIKE :query')
+        ->orWhere('k.lastName LIKE :query')
+        ->setParameter('query', '%' . $query . '%')
+        ->getQuery()
+        ->getResult();
+
+    }
+
 }
