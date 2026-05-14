@@ -10,7 +10,8 @@
 <div class="searchKudos">
     
     <form action="{{ path('app_search') }}" method="GET">
-            <i class=" order bi bi-arrow-down-up"></i>
+        <a href="{{path('app_sort_desc')}}" class ="btn"><i class=" order bi bi-arrow-down"></i></a>
+        <a href="{{path('app_sort_asc')}}" class ="btn"><i class=" order bi bi-arrow-up"></i></a>
         <input type="text" name="q" value="{{ app.request.query.get('q') }}" placeholder="Search for a kudos...">
         <button type="submit"><i class="bi bi-search"></i></button>
     </form>

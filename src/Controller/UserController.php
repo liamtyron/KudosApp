@@ -17,6 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/user')]
 final class UserController extends AbstractController
@@ -50,8 +51,24 @@ final class UserController extends AbstractController
     }
 
     #[Route('/user', name: 'app_user_show', methods: ['GET'])]
-    public function show(#[CurrentUser()]User $user, EntityManagerInterface $entityManager): Response
+    public function show(#[CurrentUser()]User $user, EntityManagerInterface $entityManager, SluggerInterface $slugger, UserRepository $userRepository): Response
     {
+
+        //  $profile = $userRepository->get
+
+        //     if($profile){
+        //         $file = pathinfo($profile->getClientOriginalExtension(), PATHINFO_EXTENSION);
+        //         $safeFilename = $slugger->slug($file);
+        //         $newFilename = $safeFilename.'-'.uniqid().'-'.$profile->guessExtension();
+
+        //         try{
+        //             $profile->get($profilepicsDirectory, $newFilename);
+        //         }catch(FileException $e){
+
+        //         }
+
+        //         $user->setProfilePic($newFilename);
+        //     }
    
 
 

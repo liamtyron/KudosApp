@@ -266,3 +266,6 @@
 //     return $this->render('kudos/kudos.html.twig', [
 //         'kudos' => $kudos,
 //     ]);
+
+
+//{{ include('kudos/_form.html.twig') }}
