@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 class KudosController extends AbstractController
 {
-    #[Route("/dashboard")]
+    #[Route("/dashboard", name: 'app_dashboard')]
     public function kudos(KudosRepository $kudosRepository):Response
     {
 
