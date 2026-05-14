@@ -9,9 +9,9 @@
 
 <div class="searchKudos">
     
-    <form action="search.php" method="GET">
+    <form action="{{ path('app_dashboard') }}" method="GET">
             <i class=" order bi bi-arrow-down-up"></i>
-        <input type="text" name="query" placeholder="Search for a kudos...">
+        <input type="text" name="q" value="{{ app.request.query.get('q') }}" placeholder="Search for a kudos...">
         <button type="submit"><i class="bi bi-search"></i></button>
     </form>
 </div>
@@ -20,7 +20,10 @@
 <div class="card mt-3" style="width: auto;">
     
    <div class="card-body">
-    
+     <img src="{{  asset('kudo.sender.profilePic') }}" 
+             alt="{{ kudo.sender.firstName }}"
+             class="rounded-circle me-2"
+             style="width: 40px; height: 40px; object-fit: cover;">
     <h5 class="card-sender"><strong>{{ kudo.sender.firstName }} {{ kudo.sender.lastName }}</strong></h5>
     <h6 class="card-subtitle mb-2 text-body-secondary">@{{ kudo.sender.username }}</h6>
     <h7 class="card-receiver">To <strong>{{ kudo.receiver.firstName }} {{ kudo.receiver.lastName }}</strong></h7>
