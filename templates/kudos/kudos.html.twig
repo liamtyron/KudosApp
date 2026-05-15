@@ -26,8 +26,7 @@
    <div class="card-body">
      <div class="row">
         <div class="stamp d-flex justify-content-between align-items-center mb-4">
-            <div class="day">{{ kudo.createdAt|date('l') }}</div>
-            <div class="dateHour">{{ kudo.createdAt|date('d.m h:m') }}</div>
+            <div class="dateHour">{{ kudo.createdAt|relative_time}}</div>
         </div>
   </div>
     <div class="d-flex align-items-center mb-3">
@@ -57,6 +56,7 @@
         {% endif %}
         
     </p>
+    <p class="card-text mb-4"><br>{{ kudo.msgContent|highlight|raw }}</p>
    
     </div>
 </div>
