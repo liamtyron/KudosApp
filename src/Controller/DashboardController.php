@@ -23,23 +23,17 @@ final class DashboardController extends AbstractController
         foreach($kudos as $kudo)
         {
             $kudosGif[$kudo->getId()] = $gifyService->queryGiphy($kudo->getMsgContent());
-            // $kudosGif[] = [
-            //     'kudo' => $kudo,
-            //     'gifUrl' => $gifyService->queryGiphy($kudo->getMsgContent()),
-            // ];
+          
             
             
         }
-        // $message = 'happy'; 
-        // $gifUrl = $gifyService->queryGiphy($message);
+      
         dump('gifUrl', );
 
         return $this->render('kudos/kudos.html.twig', [
             'kudos' => $kudos,
             'kudosGif' => $kudosGif,
-            // 'gif_url' => $gifUrl,
-            // 'keyword' => $message,
-            //'kudos_data' => $kudosGif,
+           
         ]);
     }
 
