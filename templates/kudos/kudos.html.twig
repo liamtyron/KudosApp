@@ -45,6 +45,17 @@
     
     <h7 class="card-receiver">To <strong>{{ kudo.receiver.firstName }} {{ kudo.receiver.lastName }}</strong></h7>
     
+    <p class="card-text mb-4"><br>{{ kudo.msgContent }}</p>
+    <p class="gif">
+       
+        
+        {% if kudosGif[kudo.id] is defined and kudosGif[kudo.id] %}
+            <img src="{{ kudosGif[kudo.id] }}" alt="Giphy Reaction" style="height: 200px; width: auto;" />
+        {% else %}
+            <p>No reaction found for this keyword.</p>
+        {% endif %}
+        
+    </p>
     <p class="card-text mb-4"><br>{{ kudo.msgContent|highlight|raw }}</p>
    
     </div>

@@ -3,25 +3,44 @@
 namespace App\Controller;
 
 use App\Repository\KudosRepository;
+use App\Service\GiphyService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
+
 final class DashboardController extends AbstractController
 {
     
     #[Route("/dashboard", name: 'app_dashboard')]
-    public function kudos(KudosRepository $kudosRepository):Response
+    public function kudos(KudosRepository $kudosRepository, GiphyService $gifyService):Response
     {
+        $kudos = $kudosRepository->findAll();
 
-        
+        $kudosGif = [];
 
-    $kudos = $kudosRepository->findAll();
+        foreach($kudos as $kudo)
+        {
+            $kudosGif[$kudo->getId()] = $gifyService->queryGiphy($kudo->getMsgContent());
+            // $kudosGif[] = [
+            //     'kudo' => $kudo,
+            //     'gifUrl' => $gifyService->queryGiphy($kudo->getMsgContent()),
+            // ];
+            
+            
+        }
+        // $message = 'happy'; 
+        // $gifUrl = $gifyService->queryGiphy($message);
+        dump('gifUrl', );
 
-    return $this->render('kudos/kudos.html.twig', [
-        'kudos' => $kudos,
-    ]);
+        return $this->render('kudos/kudos.html.twig', [
+            'kudos' => $kudos,
+            'kudosGif' => $kudosGif,
+            // 'gif_url' => $gifUrl,
+            // 'keyword' => $message,
+            //'kudos_data' => $kudosGif,
+        ]);
     }
 
 
