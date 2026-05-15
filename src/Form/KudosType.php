@@ -6,6 +6,7 @@ use App\Entity\Kudos;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,9 @@ class KudosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('msgContent')
+            ->add('msgContent', TextareaType::class, [
+                'label'=> 'Content',
+            ])
             ->add('createdAt')
             // ->add('sender', EntityType::class, [
             //     'class' => User::class,
@@ -25,7 +28,8 @@ class KudosType extends AbstractType
             ->add('receiver', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => function ($user) {
-                return $user->getFirstName() . ' ' . $user->getLastName();},
+                    return $user->getFirstName() . ' ' . $user->getLastName();
+                },
             ])
         ;
     }
